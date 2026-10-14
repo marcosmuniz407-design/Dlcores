@@ -1,0 +1,257 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>D'la Cores</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=DM+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: coluna única de celular, cabeçalho com logo à esquerda, botões de largura total, horários em tabela simples */
+:root {
+  --bg: #FFF6FA;
+  --surface: #FFFFFF;
+  --fg: #3B2030;
+  --muted: #7C5A6C;
+  --line: #F0D3E1;
+  --rose: #E0A3C0;
+  --accent: #B5467D;
+  --on-accent: #FFFFFF;
+  --soft: #FBE3EE;
+  --ok: #2F7D55;
+  --closed: #9A5B6F;
+  --font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --font-body: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1D1118;
+    --surface: #2A1923;
+    --fg: #FBE9F2;
+    --muted: #C9A3B7;
+    --line: #432633;
+    --rose: #E0A3C0;
+    --accent: #E98DB9;
+    --on-accent: #2A0F1D;
+    --soft: #3A2030;
+    --ok: #7FD1A3;
+    --closed: #D9A0B5;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #1D1118;
+  --surface: #2A1923;
+  --fg: #FBE9F2;
+  --muted: #C9A3B7;
+  --line: #432633;
+  --rose: #E0A3C0;
+  --accent: #E98DB9;
+  --on-accent: #2A0F1D;
+  --soft: #3A2030;
+  --ok: #7FD1A3;
+  --closed: #D9A0B5;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+  padding-inline: 18px;
+  padding-block: 28px 40px;
+}
+.wrap { max-width: 440px; margin-inline: auto; display: flex; flex-direction: column; gap: 22px; }
+a { color: inherit; text-decoration: none; }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+/* Cabeçalho */
+.head { display: flex; align-items: center; gap: 16px; }
+.logo {
+  flex: none; width: 84px; height: 84px; border-radius: 50%;
+  background: var(--rose); color: #fff;
+  display: grid; place-items: center; position: relative;
+  box-shadow: 0 0 0 4px var(--bg), 0 0 0 5px var(--line);
+}
+.logo svg { position: absolute; inset: 0; margin: auto; width: 46px; height: 46px; top: -10px; }
+.logo span { font-family: var(--font-display); font-style: italic; font-weight: 600; font-size: 19px; margin-top: 30px; letter-spacing: .01em; }
+.head h1 { margin: 0; font-family: var(--font-display); font-size: 38px; line-height: 1; font-weight: 600; font-style: italic; text-wrap: balance; }
+.head p { margin: 6px 0 0; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+
+/* Situação */
+.status { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; color: var(--muted); }
+.dot { width: 9px; height: 9px; border-radius: 50%; background: var(--closed); }
+.status[data-open="true"] .dot { background: var(--ok); }
+.status strong { color: var(--fg); font-weight: 600; }
+
+/* Promoção */
+.promo { background: var(--accent); color: var(--on-accent); border-radius: 18px; padding: 18px 18px 20px; display: flex; flex-direction: column; gap: 10px; }
+.promo small { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; opacity: .9; }
+.promo h2 { margin: 0; font-family: var(--font-display); font-size: 34px; line-height: 1.05; font-weight: 600; font-style: italic; text-wrap: balance; }
+.promo p { margin: 0; font-size: 15px; opacity: .95; }
+.promo a { align-self: flex-start; margin-top: 4px; background: var(--on-accent); color: var(--accent); font-weight: 600; font-size: 15px; padding: 11px 18px; border-radius: 999px; }
+
+/* Botões de link */
+.links { display: flex; flex-direction: column; gap: 10px; }
+.btn { display: flex; align-items: center; justify-content: space-between; gap: 12px; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 15px 16px; font-weight: 500; transition: transform .15s ease, border-color .15s ease; }
+.btn:hover { border-color: var(--accent); transform: translateY(-1px); }
+.btn b { display: block; font-weight: 600; }
+.btn em { display: block; font-style: normal; font-size: 13px; color: var(--muted); font-weight: 400; }
+.btn svg { flex: none; width: 18px; height: 18px; stroke: var(--accent); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.btn.main { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+.btn.main em { color: var(--bg); opacity: .75; }
+.btn.main svg { stroke: var(--bg); }
+.btn > div { min-width: 0; }
+
+/* Serviços */
+h3 { margin: 0 0 10px; font-family: var(--font-display); font-size: 26px; font-weight: 600; font-style: italic; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.chips li { background: var(--soft); border-radius: 999px; padding: 8px 14px; font-size: 14px; font-weight: 500; }
+
+/* Horários */
+.hours { width: 100%; border-collapse: collapse; font-size: 15px; font-variant-numeric: tabular-nums; }
+.hours td { padding: 10px 0; border-bottom: 1px solid var(--line); }
+.hours td:last-child { text-align: right; font-weight: 600; }
+.hours tr.today td { color: var(--accent); font-weight: 600; }
+.hours tr:last-child td { border-bottom: 0; }
+
+.num { font-size: 15px; color: var(--muted); margin: 10px 0 0; }
+.num span { color: var(--fg); font-weight: 600; user-select: all; }
+
+footer { font-size: 13px; color: var(--muted); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding-top: 6px; border-top: 1px solid var(--line); }
+
+@media (prefers-reduced-motion: reduce) { .btn { transition: none; } .btn:hover { transform: none; } }
+</style>
+
+<main class="wrap">
+  <header class="head">
+    <div class="logo" aria-hidden="true">
+      <svg viewBox="0 0 48 48" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M24 38C12 29 9 22 9 17.5 9 13 12.5 10 16.5 10c3 0 5.5 1.6 7.5 4.6C26 11.600 28.500 10 31.500 10 35.500 10 39 13 39 17.500 39 22 36 29 24 38Z"/><path d="M17 6l3.500 3 3.500-4 3.500 4L31 6"/></svg>
+      <span>D'la Cores</span>
+    </div>
+    <div>
+      <h1>D'la Cores</h1>
+      <p>Esmalteria · Estética · Cursos</p>
+    </div>
+  </header>
+
+  <div class="status" id="status" data-open="false" aria-live="polite">
+    <span class="dot"></span><span id="statusText">Ter a Sáb, 8h às 17h · Dom, 8h às 11h</span>
+  </div>
+
+  <section class="promo" aria-labelledby="promoTitle">
+    <small>Toda semana</small>
+    <h2 id="promoTitle">Promo de terça e quarta</h2>
+    <p>Alongamento de unha, bronze, cabelo, cílios e estética com condição especial. Garanta sua vaga agora.</p>
+    <a href="https://wa.me/559888124814?text=Oi!%20Quero%20saber%20da%20promo%20de%20ter%C3%A7a%20e%20quarta" target="_blank" rel="noopener">Quero minha vaga</a>
+  </section>
+
+  <nav class="links" aria-label="Links">
+    <a class="btn main" href="https://wa.me/559888124814?text=Oi!%20Quero%20agendar%20um%20hor%C3%A1rio%20na%20D'la%20Cores" target="_blank" rel="noopener">
+      <div><b>Agendar pelo WhatsApp</b><em>Resposta direta com a equipe</em></div>
+      <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+    <a class="btn" href="https://wa.me/559888124814?text=Oi!%20Quero%20saber%20sobre%20os%20cursos%20da%20D'la%20Cores" target="_blank" rel="noopener">
+      <div><b>Cursos</b><em>Datas, valores e vagas</em></div>
+      <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+    <a class="btn" href="https://maps.app.goo.gl/F1AyUU8NrkjxghPe6?g_st=ic" target="_blank" rel="noopener">
+      <div><b>Endereço</b><em>Ver como chegar no Google Maps</em></div>
+      <svg viewBox="0 0 24 24"><path d="M12 21s-6-5.400-6-10a6 6 0 0 1 12 0c0 4.600-6 10-6 10Z"/><circle cx="12" cy="11" r="2.200"/></svg>
+    </a>
+    <a class="btn" href="https://instagram.com/dlacores" target="_blank" rel="noopener">
+      <div><b>Instagram</b><em>@dlacores · trabalhos e novidades</em></div>
+      <svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg>
+    </a>
+  </nav>
+
+  <section aria-labelledby="destTitle">
+    <h3 id="destTitle">Veja nosso trabalho</h3>
+    <div class="links">
+      <a class="btn" href="https://www.instagram.com/reel/DavOoDNRG7N/" target="_blank" rel="noopener">
+        <div><b>Reel em destaque</b><em>Assista no Instagram</em></div>
+        <svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg>
+      </a>
+      <a class="btn" href="https://www.instagram.com/p/DdpI5ZaGfPG/" target="_blank" rel="noopener">
+        <div><b>Post em destaque</b><em>Veja no Instagram</em></div>
+        <svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg>
+      </a>
+      <a class="btn" href="https://www.instagram.com/reel/DYkLoUdtQfi/" target="_blank" rel="noopener">
+        <div><b>Mais um reel</b><em>Assista no Instagram</em></div>
+        <svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <section aria-labelledby="servTitle">
+    <h3 id="servTitle">O que fazemos</h3>
+    <ul class="chips">
+      <li>Alongamento de unha</li>
+      <li>Esmaltação</li>
+      <li>Bronze</li>
+      <li>Cabelo</li>
+      <li>Cílios</li>
+      <li>Estética</li>
+      <li>Cursos</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="horTitle">
+    <h3 id="horTitle">Horário de atendimento</h3>
+    <table class="hours" id="hours">
+      <tr data-d="1"><td>Segunda</td><td>Fechado</td></tr>
+      <tr data-d="2"><td>Terça</td><td>8h às 17h</td></tr>
+      <tr data-d="3"><td>Quarta</td><td>8h às 17h</td></tr>
+      <tr data-d="4"><td>Quinta</td><td>8h às 17h</td></tr>
+      <tr data-d="5"><td>Sexta</td><td>8h às 17h</td></tr>
+      <tr data-d="6"><td>Sábado</td><td>8h às 17h</td></tr>
+      <tr data-d="0"><td>Domingo</td><td>8h às 11h</td></tr>
+    </table>
+    <p class="num">WhatsApp <span>(98) 8812-4814</span></p>
+  </section>
+
+  <footer>
+    <span>D'la Cores · Esmalteria, Estética e Cursos</span>
+    <span>@dlacores</span>
+  </footer>
+</main>
+
+<script>
+(function () {
+  // Horários: [abre, fecha] em horas, por dia da semana (0 = domingo)
+  var H = { 0: [8, 11], 1: null, 2: [8, 17], 3: [8, 17], 4: [8, 17], 5: [8, 17], 6: [8, 17] };
+  var names = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"];
+  var day, hour;
+  try {
+    var parts = new Intl.DateTimeFormat("en-US", { timeZone: "America/Fortaleza", weekday: "short", hour: "numeric", minute: "numeric", hour12: false }).formatToParts(new Date());
+    var map = {}; parts.forEach(function (p) { map[p.type] = p.value; });
+    day = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].indexOf(map.weekday);
+    hour = (parseInt(map.hour, 10) % 24) + parseInt(map.minute, 10) / 60;
+  } catch (e) { return; }
+  if (day < 0) return;
+
+  var rows = document.querySelectorAll("#hours tr");
+  for (var i = 0; i < rows.length; i++) {
+    if (parseInt(rows[i].getAttribute("data-d"), 10) === day) rows[i].className = "today";
+  }
+
+  var slot = H[day];
+  var el = document.getElementById("status");
+  var txt = document.getElementById("statusText");
+  if (slot && hour >= slot[0] && hour < slot[1]) {
+    el.setAttribute("data-open", "true");
+    txt.innerHTML = "<strong>Aberto agora</strong> · fecha às " + slot[1] + "h";
+  } else {
+    var next = null, d = day;
+    for (var k = 0; k < 7 && !next; k++) {
+      var cand = (day + k) % 7, s = H[cand];
+      if (!s) continue;
+      if (k === 0 && hour >= s[0]) continue;
+      next = { when: k === 0 ? "hoje" : (k === 1 ? "amanhã" : names[cand].toLowerCase()), at: s[0] };
+    }
+    txt.innerHTML = "<strong>Fechado agora</strong>" + (next ? " · abre " + next.when + " às " + next.at + "h" : "");
+  }
+})();
+</script>
+
+</body></html>
